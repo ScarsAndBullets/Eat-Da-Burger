@@ -1,23 +1,42 @@
 <div class="container">
+
   <div class="jumbotron">
-    <h1 class="display-4">Eat-Da-Burger!</h1>
-    <img src="/public/assets/img/burger.png" alt="burger.png">
+    <img src="../public/assets/img/burger.png" class="img-fluid" alt="Responsive image">
+    <h1>Eat Da Burger...</h1>
   </div>
+
   <div class="row">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Burger Name" aria-label="Burger Name"
-        aria-describedby="button-addon4">
-      <div class="input-group-append" id="button-addon4">
-        <button class="btn btn-outline-secondary" type="button">Submit</button>
-      </div>
-    </div>
+    <h2>Name the burger you'd like to eat:</h2>
+    <form class="form-inline">
+
+      <label class="sr-only" for="ca">Burger Name</label>
+      <input type="text" class="form-control mb-10 mr-sm-10" id="ca" placeholder="Burger Name">
+
+      <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
   </div>
+
   <div class="row">
-    <div class="col">
-      <h1>Burgers</h1>
+    <div class="col-6">
+      <h2>Burgers to be eaten.</h2>
+      <ul>
+        {{#each burgers}}
+        {{#unless devoured}}
+        <button class="btn btn-primary devour" type="submit" data-id="{{this.id}}">Devour</button>
+        {{/unless}}
+        {{/each}}
+      </ul>
     </div>
-    <div class="col">
-      <h1>Eaten Burgers</h1>
+    <div class="col-6">
+      <h2>Burgers that been done ate.</h2>
+
+      <ul>
+        {{#each burgers}}
+        {{#if devoured}}
+        {{/if}}
+        {{/each}}
+      </ul>
     </div>
   </div>
+
 </div>
